@@ -29,10 +29,10 @@ export default function Projects() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-coral-100">
       <Navbar />
       <main className="max-w-6xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <div className="bg-coral-50 rounded-lg shadow-lg p-8 mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">
             Our Projects
           </h1>
@@ -45,7 +45,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+              className="bg-coral-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
             >
               <img
                 src={project.image}

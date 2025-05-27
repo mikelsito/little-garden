@@ -19,7 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        {children}
+        <div style={{ backgroundColor: '#e6a990' }}>
+          <main style={{ backgroundColor: '#ffe5da', minHeight: '100vh' }}>
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

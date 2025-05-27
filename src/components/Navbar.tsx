@@ -9,20 +9,20 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow-lg">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex justify-between items-center">
+    <nav className="bg-coral-50 shadow-lg">
+      <div className="max-w-6xl mx-auto px-4 h-20 flex items-center">
+        <div className="flex justify-between items-center w-full">
           <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold text-gray-800">
+            <Link href="/" className="text-2xl font-bold text-gray-800">
               Little Garden
             </Link>
           </div>
 
           {/* Desktop menu */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-4 ml-auto">
             <Link 
               href="/" 
-              className={`py-4 px-2 ${pathname === '/' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
+              className={`py-6 px-4 ${pathname === '/' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
             >
               Home
             </Link>
@@ -53,7 +53,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden ml-auto">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-500 hover:text-gray-700 focus:outline-none"
@@ -76,21 +76,21 @@ export default function Navbar() {
           <Link 
             href="/" 
             onClick={() => setIsOpen(false)}
-            className={`block px-3 py-2 rounded-md text-base font-medium ${pathname === '/' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
+            className={`block px-4 py-3 rounded-md text-base font-medium ${pathname === '/' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
           >
             Home
           </Link>
           <Link 
             href="/about" 
             onClick={() => setIsOpen(false)}
-            className={`block px-3 py-2 rounded-md text-base font-medium ${pathname === '/about' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
+            className={`block px-4 py-3 rounded-md text-base font-medium ${pathname === '/about' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
           >
             About
           </Link>
           <Link 
             href="/projects" 
             onClick={() => setIsOpen(false)}
-            className={`block px-3 py-2 rounded-md text-base font-medium ${pathname === '/projects' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
+            className={`block px-4 py-3 rounded-md text-base font-medium ${pathname === '/projects' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
           >
             Projects
           </Link>
@@ -104,7 +104,7 @@ export default function Navbar() {
           <Link 
             href="/contact" 
             onClick={() => setIsOpen(false)}
-            className={`block px-3 py-2 rounded-md text-base font-medium ${pathname === '/contact' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
+            className={`block px-4 py-3 rounded-md text-base font-medium ${pathname === '/contact' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
           >
             Contact
           </Link>

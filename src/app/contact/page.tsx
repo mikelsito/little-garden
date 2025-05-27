@@ -2,10 +2,10 @@ import Navbar from '@/components/Navbar';
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-coral-100">
       <Navbar />
       <main className="max-w-6xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow-lg p-8">
+        <div className="bg-coral-50 rounded-lg shadow-lg p-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-8">
             Contact Us
           </h1>
