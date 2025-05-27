@@ -1,6 +1,52 @@
+'use client';
+
 import Navbar from '@/components/Navbar';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 export default function Contact() {
+  const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccessMessage('');
+    setErrorMessage('');
+
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
+    const data = {
+      name: formData.get('name')?.toString() || '',
+      email: formData.get('email')?.toString() || '',
+      subject: formData.get('subject')?.toString() || '',
+      message: formData.get('message')?.toString() || '',
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSuccessMessage(result.message);
+        // Reset form
+        (e.currentTarget as HTMLFormElement).reset();
+      } else {
+        setErrorMessage(result.message);
+      }
+    } catch (error) {
+      setErrorMessage('An error occurred. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="min-h-screen bg-coral-100">
       <Navbar />
@@ -10,7 +56,7 @@ export default function Contact() {
             Contact Us
           </h1>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div>
               <h2 className="text-2xl font-bold text-gray-800 mb-6">
@@ -27,8 +73,8 @@ export default function Contact() {
                   <div>
                     <h3 className="text-lg font-medium text-gray-900">Visit Us</h3>
                     <p className="mt-1 text-gray-600">
-                      123 Garden Street<br />
-                      Green City, GC 12345<br />
+                      4346 Blaisdell Ave<br />
+                      Minneapolis, MN 55409<br />
                       United States
                     </p>
                   </div>
@@ -43,8 +89,8 @@ export default function Contact() {
                   <div>
                     <h3 className="text-lg font-medium text-gray-900">Email Us</h3>
                     <p className="mt-1 text-gray-600">
-                      <a href="mailto:info@little-garden.com" className="text-blue-500 hover:text-blue-700">
-                        info@little-garden.com
+                      <a href="mailto:littlegardensara@gmail.com" className="text-blue-500 hover:text-blue-700">
+                        littlegardensara@gmail.com
                       </a>
                     </p>
                   </div>
@@ -59,8 +105,8 @@ export default function Contact() {
                   <div>
                     <h3 className="text-lg font-medium text-gray-900">Phone</h3>
                     <p className="mt-1 text-gray-600">
-                      <a href="tel:+1234567890" className="text-blue-500 hover:text-blue-700">
-                        (123) 456-7890
+                      <a href="tel:+6519551227" className="text-blue-500 hover:text-blue-700">
+                        (651) 955-1227
                       </a>
                     </p>
                   </div>
@@ -73,7 +119,7 @@ export default function Contact() {
               <h2 className="text-2xl font-bold text-gray-800 mb-6">
                 Send a Message
               </h2>
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                     Your Name
@@ -83,7 +129,8 @@ export default function Contact() {
                     id="name"
                     name="name"
                     required
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                    placeholder="Your Name"
                   />
                 </div>
 
@@ -96,7 +143,8 @@ export default function Contact() {
                     id="email"
                     name="email"
                     required
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                    placeholder="your.email@example.com"
                   />
                 </div>
 
@@ -109,7 +157,8 @@ export default function Contact() {
                     id="subject"
                     name="subject"
                     required
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                    placeholder="Subject"
                   />
                 </div>
 
@@ -120,17 +169,31 @@ export default function Contact() {
                   <textarea
                     id="message"
                     name="message"
-                    rows={4}
                     required
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  ></textarea>
+                    rows={4}
+                    className="mt-1 block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                    placeholder="Your message..."
+                  />
                 </div>
 
+                <div>
+                  {successMessage && (
+                    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                      {successMessage}
+                    </div>
+                  )}
+                  {errorMessage && (
+                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                      {errorMessage}
+                    </div>
+                  )}
+                </div>
                 <button
                   type="submit"
-                  className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                  disabled={loading}
+                  className="w-full bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {loading ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>
