@@ -2,28 +2,13 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { NextRequest } from 'next/server';
 
-// Check if required environment variables are set
-if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-  console.error('Missing environment variables: GMAIL_USER or GMAIL_APP_PASSWORD');
-  throw new Error('Missing required environment variables');
-}
-
-// Create a transporter using Gmail
+// Create a transporter with optional auth
 const transporter = nodemailer.createTransport({
   service: 'gmail',
-  auth: {
+  auth: process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD ? {
     user: process.env.GMAIL_USER,
     pass: process.env.GMAIL_APP_PASSWORD
-  }
-});
-
-// Test the connection
-transporter.verify((error: Error | null, success: boolean) => {
-  if (error) {
-    console.error('SMTP connection error:', error);
-  } else {
-    console.log('SMTP connection ready:', success);
-  }
+  } : undefined
 });
 
 export async function POST(request: NextRequest) {
@@ -43,6 +28,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { success: false, message: 'Please provide a valid email address' },
         { status: 400 }
+      );
+    }
+
+    // Check if email configuration is available
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      return NextResponse.json(
+        { success: false, message: 'Email service is currently unavailable. Please try again later.' },
+        { status: 500 }
       );
     }
 
