@@ -10,11 +10,15 @@ export default function Navbar() {
 
   return (
     <nav className="bg-coral-50 shadow-lg">
-      <div className="max-w-6xl mx-auto px-4 h-20 flex items-center">
+      <div className="max-w-6xl mx-auto px-6 h-40 flex items-center">
         <div className="flex justify-between items-center w-full">
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold text-gray-800">
-              Little Garden
+            <Link href="/" className="flex items-center">
+              <img 
+                src="/images/logos/little-garden.png" 
+                alt="Little Garden Logo" 
+                className="h-20 w-auto" 
+              />
             </Link>
           </div>
 
@@ -22,31 +26,31 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-4 ml-auto">
             <Link 
               href="/" 
-              className={`py-6 px-4 ${pathname === '/' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
+              className={`py-6 px-4 text-lg ${pathname === '/' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
             >
               Home
             </Link>
             <Link 
               href="/about" 
-              className={`py-4 px-2 ${pathname === '/about' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
+              className={`py-4 px-2 text-lg ${pathname === '/about' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
             >
               About
             </Link>
             <Link 
               href="/projects" 
-              className={`py-4 px-2 ${pathname === '/projects' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
+              className={`py-4 px-2 text-lg ${pathname === '/projects' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
             >
               Projects
             </Link>
             <Link 
               href="/services" 
-              className={`py-4 px-2 ${pathname === '/services' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
+              className={`py-4 px-2 text-lg ${pathname === '/services' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
             >
               Services
             </Link>
             <Link 
               href="/contact" 
-              className={`py-4 px-2 ${pathname === '/contact' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
+              className={`py-4 px-2 text-lg ${pathname === '/contact' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
             >
               Contact
             </Link>
@@ -56,14 +60,14 @@ export default function Navbar() {
           <div className="md:hidden ml-auto">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-500 hover:text-gray-700 focus:outline-none transition-all duration-500 ease-in-out"
+              className="p-3 text-gray-500 hover:text-gray-700 focus:outline-none transition-all duration-500 ease-in-out"
             >
-              <svg className="h-6 w-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-10 w-10" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                 {isOpen ? (
                   <g className="transform transition-transform duration-500 ease-in-out">
-                    <path className="origin-top-left translate-x-0 -translate-y-6 rotate-45" d="M4 6h16" />
-                    <path className="origin-top-left translate-x-0 -translate-y-6 rotate-45" d="M4 12h16" />
-                    <path className="origin-top-left translate-x-0 -translate-y-6 rotate-45" d="M4 18h16" />
+                    <path className="origin-top-left translate-x-0 -translate-y-10 rotate-45" d="M4 6h16" />
+                    <path className="origin-top-left translate-x-0 -translate-y-8 rotate-45" d="M4 12h16" />
+                    <path className="origin-top-left translate-x-0 -translate-y-8 rotate-45" d="M4 18h16" />
                   </g>
                 ) : (
                   <g className="transform transition-transform duration-500 ease-in-out">
