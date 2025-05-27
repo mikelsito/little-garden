@@ -26,31 +26,31 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-4 ml-auto">
             <Link 
               href="/" 
-              className={`py-6 px-4 text-lg ${pathname === '/' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
+              className={`py-6 px-4 text-lg font-bold ${pathname === '/' ? 'text-blue-600' : 'text-gray-700 hover:text-gray-900'}`}
             >
               Home
             </Link>
             <Link 
               href="/about" 
-              className={`py-4 px-2 text-lg ${pathname === '/about' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
+              className={`py-4 px-2 text-lg font-bold ${pathname === '/about' ? 'text-blue-600' : 'text-gray-700 hover:text-gray-900'}`}
             >
               About
             </Link>
             <Link 
               href="/projects" 
-              className={`py-4 px-2 text-lg ${pathname === '/projects' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
+              className={`py-4 px-2 text-lg font-bold ${pathname === '/projects' ? 'text-blue-600' : 'text-gray-700 hover:text-gray-900'}`}
             >
               Projects
             </Link>
             <Link 
               href="/services" 
-              className={`py-4 px-2 text-lg ${pathname === '/services' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
+              className={`py-4 px-2 text-lg font-bold ${pathname === '/services' ? 'text-blue-600' : 'text-gray-700 hover:text-gray-900'}`}
             >
               Services
             </Link>
             <Link 
               href="/contact" 
-              className={`py-4 px-2 text-lg ${pathname === '/contact' ? 'text-blue-500' : 'text-gray-500 hover:text-gray-900'}`}
+              className={`py-4 px-2 text-lg font-bold ${pathname === '/contact' ? 'text-blue-600' : 'text-gray-700 hover:text-gray-900'}`}
             >
               Contact
             </Link>
