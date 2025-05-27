@@ -15,7 +15,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <img 
-                src="/images/logos/little-garden.png" 
+                src="/images/logos/logo-straight.png" 
                 alt="Little Garden Logo" 
                 className="h-20 w-auto" 
               />

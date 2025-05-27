@@ -7,6 +7,10 @@
   --background-rgb: 230, 169, 144; /* coral-100 */
 }
 
+p {
+  @apply text-lg leading-relaxed;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
